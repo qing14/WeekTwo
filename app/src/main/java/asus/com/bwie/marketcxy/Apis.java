@@ -15,4 +15,9 @@ public class Apis {
     public static final String MoreShopPath="commodity/v1/findCommodityListByLabel";
     //根据键词查询商品信息
     public static final String ByKeywordPath="commodity/v1/findCommodityByKeyword";
+    //加入购物车
+    public static final String addShopCarPath="order/verify/v1/syncShoppingCart";
+    //查询购物车
+    public static final String ShopCarPath="order/verify/v1/findShoppingCart";
+
 }

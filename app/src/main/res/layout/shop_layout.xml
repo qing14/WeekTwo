@@ -29,11 +29,18 @@
             android:src="@mipmap/common_nav_btn_search"
             android:layout_gravity="center"/>
     </LinearLayout>
-
+    <ImageView
+        android:id="@+id/noFindByKeyword"
+        android:layout_width="@dimen/dp_50"
+        android:layout_height="@dimen/dp_50"
+        android:src="@drawable/t4"
+        android:layout_gravity="center"
+        android:visibility="gone"/>
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/scrollView">
+
 
         <LinearLayout
             android:layout_width="match_parent"

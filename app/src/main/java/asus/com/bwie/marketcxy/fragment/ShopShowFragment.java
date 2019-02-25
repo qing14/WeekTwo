@@ -68,6 +68,8 @@ public class ShopShowFragment extends Fragment implements Iview {
     private EditText editText;
     private ByKeyWordAdapter byKeyWordAdapter;
     private String ed;
+    private View inflate;
+    private ImageView noFindByKeyword;
 
     @Nullable
     @Override
@@ -89,6 +91,9 @@ public class ShopShowFragment extends Fragment implements Iview {
         back = inflate.findViewById(R.id.back);
         editText = inflate.findViewById(R.id.edit);
         sy_sousuo = inflate.findViewById(R.id.sy_sousuo);
+        noFindByKeyword = inflate.findViewById(R.id.noFindByKeyword);
+
+
 
 
         ipresenter = new PresenterImpl(this);
@@ -131,8 +136,9 @@ public class ShopShowFragment extends Fragment implements Iview {
             public void onClick(View v) {
                 scrollView.setVisibility(View.VISIBLE);
                 morelinear.setVisibility(View.GONE);
-
+                noFindByKeyword.setVisibility(View.GONE);
                 editText.getText().clear();
+
             }
         });
         sy_sousuo.setOnClickListener(new View.OnClickListener() {
@@ -174,30 +180,6 @@ public class ShopShowFragment extends Fragment implements Iview {
         });
 
     }
-
-//    private void initMoreData(int num) {
-//        scrollView.setVisibility(View.GONE);
-//        morelinear.setVisibility(View.VISIBLE);
-//        GridLayoutManager gridLayoutManager=new GridLayoutManager(getActivity(),pznum);
-//        gridLayoutManager.setOrientation(OrientationHelper.VERTICAL);
-//        moreRecycle.setLayoutManager(gridLayoutManager);
-//        ipresenter.get(Apis.MoreShopPath+"?labelId="+num+"&page=1&count=10",ClickMoreBean.class);
-//        moreAdapter = new MoreAdapter(getContext());
-//        moreRecycle.addItemDecoration(new SpaceItemDecoration(10));
-//        moreRecycle.setAdapter(moreAdapter);
-//        moreAdapter.setOnMoreClickListenter(new MoreAdapter.MoreClickListenter() {
-//            @Override
-//            public void onClick(int position) {
-//                Intent intent=new Intent(getActivity().getApplicationContext(),ParticularsActivity.class);
-//                int pid = moreAdapter.getPid(position);
-//                Bundle bundle=new Bundle();
-//                bundle.putString("pid",pid+"");
-//                intent.putExtras(bundle);
-//                getActivity().startActivity(intent);
-//            }
-//        });
-//
-//    }
 
 
     private void initSYRXXPData() {
@@ -278,6 +260,9 @@ public class ShopShowFragment extends Fragment implements Iview {
 
             if (result.size() == 0) {
                 Toast.makeText(getActivity(), "没有您想要的内容", Toast.LENGTH_SHORT).show();
+                noFindByKeyword.setVisibility(View.VISIBLE);
+                scrollView.setVisibility(View.GONE);
+                noFindByKeyword.setImageResource(R.mipmap.meiyoushop);
 
             } else {
                 byKeyWordAdapter.setResultBeans(byKeywordBean.getResult());
